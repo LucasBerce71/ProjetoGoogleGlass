@@ -1,47 +1,127 @@
-Google Glass
-A revolução do Google está chegando
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Google Glass News</title>
+    <link rel="stylesheet" href="_css/estilo.css"/>
+    <link rel="stylesheet" href="_css/form.css"/>
+</head>
+<script language="javascript" src="_javascript/funcoes.js"></script>
+<body>
+<div id="interface">
+    <header id="cabecalho">
+        <hgroup>
+        <h1>Google Glass</h1>
+        <h2>A revolução do Google está chegando<h2>
+        </hgroup>
 
-[AQUI ENTRA UMA FOTO]
+        <img id="icone" src="_imagens/glass-oculos-preto-peq.png">
+    <nav id="menu">
+        <h1>Menu Principal</h1>
+        <ul>
+            <li onmouseover="mudaFoto('_imagens/home.png')" onmouseout="mudaFoto('_imagens/contato.png')">
+            <a href="index.html">Home</a>
+            </li>
+            <li onmouseover="mudaFoto('_imagens/especificacoes.png')" onmouseout="mudaFoto('_imagens/contato.png')">
+            <a href="specs.html">Especificações</a>
+            </li>
+            <li onmouseover="mudaFoto('_imagens/fotos.png')" onmouseout="mudaFoto('_imagens/contato.png')">
+            <a href="fotos.html">Fotos</a>
+            </li>
+            <li onmouseover="mudaFoto('_imagens/multimidia.png')" onmouseout="mudaFoto('_imagens/contato.png')">
+            <a href="multimidia.html">Multimídia</a>
+            </li>
+            <li onmouseover="mudaFoto('_imagens/contato.png')" onmouseout="mudaFoto('_imagens/contato.png')">
+            <a href="fale-conosco.html">Fale conosco</a>
+            </li>
+        </ul>
+    </nav>
 
-Menu Principal
-- Home
-- Especificações
-- Fotos
-- Multimídia
-- Fale conosco
+    </header>
 
-Fale Conosco > Contato
-Formulário de Contato
-por Gustavo Guanabara
-Atualizado em 01/Maio/2013
+<section id="corpo-full">
+<article id="noticia-principal">
+    <header id="cabecalho-artigo">
+        <hgroup>
+<h3>Fale Conosco > Contato</h3>
+<h1>Formulário de Contato</h1>
+<h2>por Gustavo Guanabara</h2>
+<h3 class="direita">Atualizado em 01/Maio/2013</h3>
+        </hgroup>
+    </header>
 
-Identificação do Usuário
-    Nome:
-    Senha:
-    E-mail:
-    Sexo:
-        - Masculino
-        - Feminino
-    Data de Nascimento:
+<form method="post" id="fContato" action="" oninput="calc_total();">
 
-Endereço do Usuário
-    Logradouro:
-    Número:
-    Estado:
-    Cidade:
+    <fieldset id="usuario">
+        <legend>Identificação do Usuário</legend>
+        <p><label for="cNome">Nome:</label><input type="text" name="tNome" id="cNome" size="20" maxlength="30" placeholder="Nome Completo" /></p>
+        <p><label for="cSenha">Senha:</label><input type="password" name="tSenha" id="cSenha" size="8" maxlength="8" placeholder="8 Dígitos" /></p>
+        <p><label for="cMail">E-mail:</label><input type="email" name="tMail" id="cMail" size="20" maxlength="40" /></p>
+        <fieldset id="sexo"><legend>Sexo:</legend>
+            <input type="radio" name="tSexo" id="cMasc"/><label for="cMasc">Masculino</label><br>
+            <input type="radio" name="tSexo" id="cFem"/><label for="cFem">Feminino</label>
+        </fieldset>
+        <p><label for="cNasci">Data de Nascimento:</label>
+        <input type="date" name="tNasci" id="cNasci" /></p>
+    </fieldset>
 
-Mensagem do Usuário
-    Grau de Urgência:
-    Mensagem:
+    <fieldset id="endereco"> 
+        <legend>Endereço do Usuário</legend>
+        <p><label for="cRua">Logradouro:</label>
+        <input type="text" name="tRua" id="cRua" size="13" maxlength="80" placeholder="Rua, AV, Trav ...." /></p>
+        <p><label>Número:</label><input type="number" name="tNum" id="cNum" min="0" max="999999"/></p>
+        <p><label for="cEst">Estado:</label>
+        <select name="tEst" id="cEst">
+            <optgroup label="Região Sudeste">
+                <option>São Paulo</option>
+                <option>Rio De Janeiro</option>
+                <option>Minas Gerais</option>
+            </optgroup>
+            <optgroup label="Região Sul">
+                <option>Paraná</option>
+                <option>Santa Catarina</option>
+                <option>Rio Grande Do Sul</option>
+            </optgroup>
+        </select></p>
+        <p><label for="cCida">Cidade:</label><input type="text" name="tCida" id="cCida" maxlength="40" size="20" placeholder="Sua cidade" list="cidades"></p>
+        <datalist id="cidades">
+            <option value="São Paulo"></option>
+            <option value="São Bernado do Campo"></option>
+            <option value="Santo Andre"></option>
+            <option value="Sorocaba"></option>
+        </datalist>
+    </fieldset>
 
-Quero um Google Glass
-    Gostaria de adquirir um Google Glass quando disponível
-    Cor:
-    Quantidade:
-    Preço Total: R$
+    <fieldset id="mensagem">
+        <legend>Mensagem do Usuário</legend>
+        <p><label for="cGrau">Grau de Urgência:</label>
+        Mín<input type="range" name="tGrau" id="cGrau" min="0" max="10" step="2">Máx</p>
+        <p><label for="cMsg">Mensagem:</label>
+        <textarea name="tMsg" id="cMsg" cols="35" rows="5" placeholder="Deixe aqui sua mensagem"></textarea></p>
+    </fieldset>
 
+    <fieldset id="pedido"> 
+        <legend>Quero um Google Glass</legend>
+        <p><input type="checkbox" name="tPed" id="cPed" checked/>
+        <label for="cPed">Gostaria de adquirir um Google Glass quando disponível</label></p>
+        <p><label for="cCor">Cor:</label>
+        <input type="color" name="tCor" id="cCor" value="#0000FF" /></p>
+        <p><label for="cQuanti">Quantidade:</label>
+        <input type="number" name="tQuanti" id="cQuanti" min="0" max="5"></p>
+        <p><label for="cPre">Preço Total:</label>R$
+        <input type="text" name="tPre" id="cPre" placeholder="Valor a pagar" readonly></p>
+    </fieldset>
 
-[BOTÃO ENVIAR]
+    <input type="image" name="tBotao" src="_imagens/botao-enviar.png"/>
 
-Copyright 2013 - by Gustavo Guanabara
-Facebook | Twitter
+</form>
+</article>
+</section>
+<footer id="rodape">
+Copyright &copy; 2017 - by Gustavo Guanabara. Desenvolvido por <a href="">Beatriz Duarte</a>.<br>
+<a href="https://www.facebook.com/beatriz.t.taylor?ref=bookmarks" target="_blank">Facebook | 
+<a href="https://github.com/Beatrizduarte" target="_blank">GitHub
+</footer>
+</div>
+</body>
+</html>
